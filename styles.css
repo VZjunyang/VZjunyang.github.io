@@ -239,3 +239,51 @@ a:hover{ opacity:.85; }
 .glightbox-clean .gclose {
   background: none !important;
 }
+
+
+/* Darker backdrop for a cinematic look */
+.goverlay { background: rgba(15,15,15,0.95) !important; }
+
+/* Remove default white bar and reposition description over the image */
+.glightbox-container .gslide-description {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 28px;                 /* distance from bottom edge */
+  width: calc(100% - 64px);     /* safe margins on sides */
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+  text-align: center;
+  pointer-events: none;         /* clicks pass through except the pill */
+}
+
+/* Caption content as a glassy pill */
+.glightbox-container .gdesc-inner {
+  display: inline-block;
+  background: rgba(20,20,20,0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #f5f5f5;
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  line-height: 1.4;
+  pointer-events: auto;
+}
+.glightbox-container .gdesc-inner strong {
+  font-weight: 700;
+  letter-spacing: .3px;
+  margin-right: 6px;
+}
+
+/* Nicer image rendering in the lightbox */
+.glightbox-container .gslide-image img {
+  border-radius: 12px;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.45);
+}
+
+/* Tidy close button */
+.glightbox-clean .gclose { background: none !important; }
