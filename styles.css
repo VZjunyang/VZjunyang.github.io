@@ -153,3 +153,33 @@ a:hover { opacity: 0.9; }
 
 /* Tidy close button */
 .glightbox-clean .gclose { background: none !important; }
+
+/* --- Desktop header: lock brand left & nav right (index-safe) --- */
+@media (min-width: 641px){
+  .topbar .header-wrap, .topbar .container {
+    display: grid !important;
+    grid-template-columns: minmax(min-content, auto) 1fr;
+    align-items: center;
+    column-gap: 22px;
+  }
+  .brand{
+    justify-self: start;
+    text-align: left;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  .topbar .nav{
+    justify-self: end;
+    width: auto !important;
+    margin: 0 !important;
+    display: flex !important;
+    gap: 22px;
+  }
+}
+
+/* Keep the mobile wrap behavior you liked */
+@media (max-width: 640px){
+  .topbar .header-wrap, .topbar .container { justify-content: center; }
+  .brand { width: 100%; text-align: center; margin: 0; }
+  .topbar .nav { width: 100%; justify-content: center; gap: 18px; }
+}
