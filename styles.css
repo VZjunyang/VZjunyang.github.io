@@ -153,28 +153,3 @@ a:hover { opacity: 0.9; }
 
 /* Tidy close button */
 .glightbox-clean .gclose { background: none !important; }
-
-/* --- Desktop header: brand left, nav right --- */
-@media (min-width: 641px){
-  .topbar .header-wrap{
-    justify-content: flex-start;   /* start the flex row */
-  }
-  .brand{
-    margin-right: auto;            /* push everything else to the right */
-    text-align: left;              /* ensure not centered on desktop */
-    width: auto;                   /* undo mobile full-width */
-  }
-  .topbar .nav{
-    margin-left: auto;             /* stick to the right edge */
-    justify-content: flex-end;
-    width: auto;                   /* undo mobile full-width */
-    gap: 22px;
-  }
-}
-
-/* Keep the mobile behavior as-is */
-@media (max-width: 640px){
-  .topbar .header-wrap{ justify-content: center; }
-  .brand{ width: 100%; text-align: center; margin-right: 0; }
-  .topbar .nav{ width: 100%; justify-content: center; margin-left: 0; }
-}
