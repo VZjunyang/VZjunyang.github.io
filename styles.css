@@ -132,3 +132,70 @@ a:hover { opacity: 0.9; }
 
 /* Remove old hero section visuals if you had them */
 .hero, .overlay, .btn { display: none !important; }
+
+/* === Clay theme + curated grid === */
+:root{
+  /* warm clay background + tasteful ink */
+  --bg: #E9E2DB;         /* clay */
+  --ink: #1B1B1B;        /* near-black text */
+  --ink-dim:#4b4b4b;     /* body/captions */
+  --accent:#2B2B2B;      /* underline/nav */
+  --gap:20px;
+  --container:min(1200px, 92vw);
+}
+
+/* global */
+body{ background:var(--bg); color:var(--ink); }
+a{ color:var(--ink); }
+a:hover{ opacity:.85; }
+
+/* top bar on clay */
+.topbar{
+  background:var(--bg);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+.nav a.active::after{ background:var(--accent); }
+
+/* headings + copy contrast tweaks */
+.title{ color:var(--ink); }
+.subtitle{ color:var(--ink); }
+.copy{ color:var(--ink-dim); }
+
+/* curated, aligned grid: use aspect-ratio + object-fit */
+.masonry{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:var(--gap);
+}
+@media (max-width: 980px){ .masonry{ grid-template-columns:repeat(2,1fr); } }
+@media (max-width: 640px){ .masonry{ grid-template-columns:1fr; } }
+
+/* tile frame */
+.tile{
+  display:block;
+  border-radius:14px;
+  background:#fff;                     /* white card on clay */
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+  overflow:hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.tile:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* inner image behaves like a cover photo */
+.tile img{
+  width:100%; height:100%;
+  object-fit:cover; display:block;
+}
+
+/* fixed aspect ratio variants (pick per tile) */
+.ratio-3x2 { aspect-ratio: 3 / 2; }  /* landscape classic */
+.ratio-4x3 { aspect-ratio: 4 / 3; }
+.ratio-1x1 { aspect-ratio: 1 / 1; }  /* square */
+.ratio-4x5 { aspect-ratio: 4 / 5; }  /* portrait */
+.ratio-2x3 { aspect-ratio: 2 / 3; }  /* portrait classic */
+
+/* optional wide/tall spans to add rhythm */
+.span-2 { grid-column: span 2; }
