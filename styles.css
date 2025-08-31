@@ -199,3 +199,43 @@ a:hover{ opacity:.85; }
 
 /* optional wide/tall spans to add rhythm */
 .span-2 { grid-column: span 2; }
+
+/* === GLightbox custom styling === */
+
+/* darken the backdrop for elegance */
+.goverlay {
+  background-color: rgba(15, 15, 15, 0.95) !important;
+}
+
+/* remove default white layer under images */
+.gdesc-inner {
+  background: transparent !important;
+  color: #f5f5f5 !important;
+  font-size: 15px;
+  line-height: 1.6;
+  text-align: center;
+  max-width: 90%;
+  margin: 16px auto 0;
+}
+
+/* make captions prettier */
+.gdesc-inner strong {
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+/* center and slightly round images */
+.glightbox-container img {
+  border-radius: 10px;
+  max-height: 85vh;
+  object-fit: contain;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
+}
+
+/* hide ugly default close icon background */
+.glightbox-clean .gclose {
+  background: none !important;
+}

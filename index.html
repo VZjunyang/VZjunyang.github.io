@@ -32,7 +32,7 @@
 
         <div class="masonry">
           <!-- landscape hero across 2 columns -->
-          <a class="tile ratio-3x2 span-2" href="images/IMG_0349.JPG" data-gallery="pf" data-title="IMG_0349">
+          <a class="tile ratio-3x2 span-2" href="images/IMG_0349.JPG" data-gallery="pf" data-description="ƒ/2.8 · 1/250s · ISO 200 · 35mm">
             <img src="images/IMG_0349.JPG" alt="IMG_0349" width="1800" height="1200" loading="lazy">
           </a>
 
@@ -94,6 +94,14 @@
 
   <!-- Lightbox -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.1/js/glightbox.min.js"></script>
-  <script>GLightbox({ selector: '.tile', loop: true, touchNavigation: true });</script>
+  <script>GLightbox({
+  selector: '.tile',
+  loop: true,
+  touchNavigation: true,
+  closeButton: true,
+  width: '90%',
+  height: 'auto'
+});
+  </script>
 </body>
 </html>
