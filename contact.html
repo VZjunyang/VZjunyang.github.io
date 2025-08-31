@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Victor Zhuang</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container flex items-center justify-between">
+      <div class="brand">VICTOR ZHUANG</div>
+      <nav class="nav">
+        <a href="index.html">PORTFOLIO</a>
+        <a href="about.html">ABOUT ME</a>
+        <a href="contact.html" class="active">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contact content -->
+  <main class="section">
+    <div class="container max-w-3xl">
+      <h1 class="title">CONTACT</h1>
+      <p class="copy">
+        For collaborations, inquiries, or bookings, feel free to reach out:
+      </p>
+      <p class="copy">
+        📧 <a href="mailto:vj.zhuang@gmail.com">vj.zhuang@gmail.com</a>
+      </p>
+      <p class="copy socials">
+        <a href="https://instagram.com/" target="_blank">Instagram</a> ·
+        <a href="https://twitter.com/" target="_blank">Twitter</a> ·
+        <a href="https://github.com/" target="_blank">GitHub</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Victor Zhuang
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me | Victor Zhuang</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="container flex items-center justify-between">
+      <div class="brand">VICTOR ZHUANG</div>
+      <nav class="nav">
+        <a href="index.html">PORTFOLIO</a>
+        <a href="about.html" class="active">ABOUT ME</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- About content -->
+  <main class="section">
+    <div class="container max-w-3xl">
+      <h1 class="title">ABOUT ME</h1>
+      <p class="copy">
+        I’m Victor, a travel and lifestyle photographer.  
+        My work focuses on capturing quiet, cinematic moments across urban and natural landscapes.  
+        I shoot primarily on Nikon systems, using natural light whenever possible.
+      </p>
+      <p class="copy">
+        When I’m not behind the camera, I’m usually experimenting with editing styles or discovering new aesthetics.  
+        Feel free to reach out if you’d like to collaborate.
+      </p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © <span id="year"></span> Victor Zhuang
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
