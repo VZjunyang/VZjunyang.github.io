@@ -287,3 +287,72 @@ a:hover{ opacity:.85; }
 
 /* Tidy close button */
 .glightbox-clean .gclose { background: none !important; }
+
+
+/* ===== Mobile/responsive fixes ===== */
+
+/* 1) Prevent any horizontal scroll on small screens */
+html, body { overflow-x: hidden; }
+
+/* 2) Make the header wrap cleanly on phones */
+.topbar .container{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap: wrap;           /* allows name and nav to stack */
+  padding-left: 16px;        /* small side padding for phones */
+  padding-right: 16px;
+}
+.brand { white-space: nowrap; }
+
+/* Nav as a single centered row under the name on small screens */
+@media (max-width: 640px){
+  .nav{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:6px;
+    flex-wrap: wrap;
+  }
+  .nav a{ margin-left:0; font-weight:600; }
+}
+
+/* 3) Container padding so content never touches edges on phones */
+.container{ padding-left: 16px; padding-right: 16px; }
+
+/* 4) Masonry grid: make sure it collapses to 1 column on phones
+      and that special spans don't break the layout */
+.masonry{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+@media (max-width: 980px){ .masonry{ grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px){
+  .masonry{ grid-template-columns: 1fr; }
+  .span-2{ grid-column: span 1 !important; }  /* reset wide tiles */
+  .tile.tall{ grid-row: auto !important; }    /* reset tall tiles */
+}
+
+/* 5) Tile safety: images always stay inside the viewport */
+.tile{
+  border-radius:14px;
+  overflow:hidden;                    /* no overflow outside card */
+  background:#fff;
+  box-shadow:0 6px 24px rgba(0,0,0,.08);
+  transform: translateZ(0);           /* avoids odd GPU artifacts */
+}
+.tile img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit: cover;                   /* crop to frame, no stretch */
+}
+
+/* 6) Slightly tighter section spacing on small screens */
+@media (max-width: 640px){
+  .section{ padding: 40px 0 48px; }
+  .title{ font-size: clamp(24px, 6vw, 36px); }
+}
