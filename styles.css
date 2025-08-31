@@ -1,264 +1,133 @@
-/* base */
-* { box-sizing: border-box; }
+/* ================================
+   Victor Zhuang — Portfolio Styles
+   Clean, clay theme + masonry grid
+   ================================ */
+
+/* ---------- Theme tokens ---------- */
 :root {
-  --bg: #0c0c0c;
-  --ink: #f5f5f5;
-  --ink-dim: #cfcfcf;
-  --accent: #ffffff;    /* underline color */
-  --gap: 18px;
+  --bg: #E9E2DB;          /* clay background */
+  --ink: #1B1B1B;         /* primary text */
+  --ink-dim: #4B4B4B;     /* secondary text */
+  --accent: #2B2B2B;      /* nav underline */
+  --gap: 20px;            /* grid gap */
   --container: min(1200px, 92vw);
 }
+
+/* ---------- Base ---------- */
+* { box-sizing: border-box; }
 html, body { height: 100%; }
+html, body { overflow-x: hidden; }
 body {
   margin: 0;
-  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+  background: var(--bg);
   color: var(--ink);
-  background: var(--bg);
+  font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
 }
 
-/* layout helpers */
-.container { width: var(--container); margin: 0 auto; }
-.section { padding: 56px 0 64px; }
-.narrow { max-width: 720px; }
-
-/* top bar */
-.topbar {
-  position: sticky; top: 0; z-index: 20;
-  background: var(--bg);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-.topbar .container {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0;
-}
-.brand {
-  font-weight: 800; letter-spacing: 0.06em;
-}
-.nav a {
-  color: var(--ink); text-decoration: none; margin-left: 22px;
-  font-weight: 700; letter-spacing: 0.05em;
-  position: relative; padding-bottom: 4px;
-}
-.nav a:hover { opacity: 0.85; }
-.nav a.active::after,
-.nav a:focus::after {
-  content: "";
-  position: absolute; left: 0; right: 0; bottom: 0;
-  height: 2px; background: var(--accent);
-}
-
-/* headings */
-.title { font-size: clamp(28px, 4vw, 48px); margin: 24px 0 24px; letter-spacing: 0.04em; }
-.subtitle { font-size: clamp(22px, 3vw, 28px); margin: 6px 0 18px; letter-spacing: 0.04em; color: var(--ink); }
-
-/* masonry grid (pure CSS, no JS) */
-.masonry {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap);
-}
-@media (max-width: 980px) { .masonry { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .masonry { grid-template-columns: 1fr; } }
-
-/* tiles */
-.tile { display: block; background: #111; border: 5px solid #111; overflow: hidden; }
-.tile img {
-  display: block; width: 100%; height: auto;
-  transition: transform .3s ease;
-}
-.tile:hover img { transform: scale(1.02); }
-
-/* size variants to get that staggered “editorial” feel */
-.tile.tall { grid-row: span 2; }
-.tile.wide { grid-column: span 2; }
-
-@supports (grid-template-rows: masonry) {
-  /* experimental masonry spec in some browsers */
-  .masonry { grid-template-rows: masonry; }
-}
-
-/* text sections */
-#about p, #contact p { color: var(--ink-dim); }
-
-/* footer */
-.footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0 40px; color: var(--ink-dim); }
-
-/* ====== Minimal black theme + layout (add to end of styles.css) ====== */
-:root {
-  --bg: #0c0c0c;
-  --ink: #f5f5f5;
-  --ink-dim: #cfcfcf;
-  --accent: #ffffff;
-  --gap: 18px;
-  --container: min(1200px, 92vw);
-}
-
-body { background: var(--bg); color: var(--ink); font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
 a { color: var(--ink); text-decoration: none; }
 a:hover { opacity: 0.9; }
 
-.container { width: var(--container); margin: 0 auto; }
-.section { padding: 56px 0 64px; }
+/* ---------- Layout helpers ---------- */
+.container { width: var(--container); margin: 0 auto; padding-inline: 16px; }
+.section   { padding: 56px 0 64px; }
+@media (max-width: 640px) { .section { padding: 40px 0 48px; } }
 
+/* ---------- Header (simple, responsive) ---------- */
 .topbar {
-  position: sticky; top: 0; z-index: 20;
+  position: sticky; top: 0; z-index: 40;
   background: var(--bg);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-  padding: 18px 0;
+  border-bottom: 1px solid rgba(0,0,0,.08);
 }
-.brand { font-weight: 800; letter-spacing: .06em; }
-.nav a { margin-left: 22px; font-weight: 700; letter-spacing: .05em; padding-bottom: 4px; position: relative; }
-.nav a.active::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background: var(--accent); }
+.topbar .container {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding: 14px 16px;
+  flex-wrap: wrap; /* allow wrapping on phones */
+}
+.brand { font-weight: 800; letter-spacing: .06em; white-space: nowrap; }
+.nav   { display: flex; align-items: center; gap: 22px; }
+.nav a {
+  font-weight: 700; letter-spacing: .05em;
+  padding-bottom: 4px; position: relative;
+}
+.nav a.active::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px; background: var(--accent);
+}
+/* Phone: center brand + nav on 2 lines, no overlap */
+@media (max-width: 640px){
+  .topbar .container { justify-content: center; }
+  .brand { width: 100%; text-align: center; }
+  .nav   { width: 100%; justify-content: center; gap: 18px; }
+}
 
-.title { font-size: clamp(28px, 4vw, 48px); margin: 24px 0; letter-spacing: .04em; }
+/* ---------- Headings ---------- */
+.title    { font-size: clamp(28px, 4vw, 48px); margin: 24px 0;  letter-spacing: .04em; }
 .subtitle { font-size: clamp(22px, 3vw, 28px); margin: 8px 0 14px; letter-spacing: .04em; }
-.copy { color: var(--ink-dim); }
+.copy     { color: var(--ink-dim); }
 
+/* ---------- Masonry grid (curated, aligned) ---------- */
 .masonry {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0,1fr));
   gap: var(--gap);
 }
-@media (max-width: 980px) { .masonry { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px) { .masonry { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .masonry { grid-template-columns: repeat(2, minmax(0,1fr)); } }
+@media (max-width: 768px)  { .masonry { grid-template-columns: 1fr; } }
 
-.tile { display:block; background:#111; border:5px solid #111; overflow:hidden; }
-.tile img { display:block; width:100%; height:auto; transition: transform .3s ease; }
-.tile:hover img { transform: scale(1.02); }
-.tile.wide { grid-column: span 2; }
-.tile.tall { grid-row: span 2; }
-
-.footer { border-top: 1px solid rgba(255,255,255,0.08); padding: 28px 0 40px; color: var(--ink-dim); }
-
-/* Remove old hero section visuals if you had them */
-.hero, .overlay, .btn { display: none !important; }
-
-/* === Clay theme + curated grid === */
-:root{
-  /* warm clay background + tasteful ink */
-  --bg: #E9E2DB;         /* clay */
-  --ink: #1B1B1B;        /* near-black text */
-  --ink-dim:#4b4b4b;     /* body/captions */
-  --accent:#2B2B2B;      /* underline/nav */
-  --gap:20px;
-  --container:min(1200px, 92vw);
-}
-
-/* global */
-body{ background:var(--bg); color:var(--ink); }
-a{ color:var(--ink); }
-a:hover{ opacity:.85; }
-
-/* top bar on clay */
-.topbar{
-  background:var(--bg);
-  border-bottom:1px solid rgba(0,0,0,.08);
-}
-.nav a.active::after{ background:var(--accent); }
-
-/* headings + copy contrast tweaks */
-.title{ color:var(--ink); }
-.subtitle{ color:var(--ink); }
-.copy{ color:var(--ink-dim); }
-
-/* curated, aligned grid: use aspect-ratio + object-fit */
-.masonry{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:var(--gap);
-}
-@media (max-width: 980px){ .masonry{ grid-template-columns:repeat(2,1fr); } }
-@media (max-width: 640px){ .masonry{ grid-template-columns:1fr; } }
-
-/* tile frame */
-.tile{
-  display:block;
-  border-radius:14px;
-  background:#fff;                     /* white card on clay */
+/* Tile cards */
+.tile {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff; /* white card on clay */
   box-shadow: 0 6px 24px rgba(0,0,0,.08);
-  overflow:hidden;
   transition: transform .25s ease, box-shadow .25s ease;
+  /* default aspect so every tile has a height (override with ratio-* below) */
+  aspect-ratio: 3 / 2;
 }
-.tile:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
+
+.tile img {
+  width: 100%; height: 100%; display: block;
+  object-fit: cover; /* crop to frame without distortion */
 }
 
-/* inner image behaves like a cover photo */
-.tile img{
-  width:100%; height:100%;
-  object-fit:cover; display:block;
-}
-
-/* fixed aspect ratio variants (pick per tile) */
+/* Ratio helpers — assign per tile for rhythm */
 .ratio-3x2 { aspect-ratio: 3 / 2; }  /* landscape classic */
 .ratio-4x3 { aspect-ratio: 4 / 3; }
 .ratio-1x1 { aspect-ratio: 1 / 1; }  /* square */
 .ratio-4x5 { aspect-ratio: 4 / 5; }  /* portrait */
 .ratio-2x3 { aspect-ratio: 2 / 3; }  /* portrait classic */
 
-/* optional wide/tall spans to add rhythm */
+/* Optional spans for larger anchors (auto-reset on phones) */
 .span-2 { grid-column: span 2; }
-
-/* === GLightbox custom styling === */
-
-/* darken the backdrop for elegance */
-.goverlay {
-  background-color: rgba(15, 15, 15, 0.95) !important;
+@media (max-width: 768px){
+  .span-2 { grid-column: span 1 !important; }
 }
 
-/* remove default white layer under images */
-.gdesc-inner {
-  background: transparent !important;
-  color: #f5f5f5 !important;
-  font-size: 15px;
-  line-height: 1.6;
-  text-align: center;
-  max-width: 90%;
-  margin: 16px auto 0;
+/* ---------- Text sections ---------- */
+#about p, #contact p { color: var(--ink-dim); }
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid rgba(0,0,0,.08);
+  padding: 28px 0 40px;
+  color: var(--ink-dim);
 }
 
-/* make captions prettier */
-.gdesc-inner strong {
-  font-size: 16px;
-  font-weight: 700;
-  display: block;
-  margin-bottom: 6px;
-  letter-spacing: 0.5px;
-}
+/* ---------- Remove any legacy hero UI (if present) ---------- */
+.hero, .overlay, .btn { display: none !important; }
 
-/* center and slightly round images */
-.glightbox-container img {
-  border-radius: 10px;
-  max-height: 85vh;
-  object-fit: contain;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-}
-
-/* hide ugly default close icon background */
-.glightbox-clean .gclose {
-  background: none !important;
-}
-
-
-/* Darker backdrop for a cinematic look */
+/* ---------- GLightbox — premium overlay + caption ---------- */
 .goverlay { background: rgba(15,15,15,0.95) !important; }
 
-/* Remove default white bar and reposition description over the image */
+/* Place description as a centered glassy pill over the image */
 .glightbox-container .gslide-description {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 28px;                 /* distance from bottom edge */
-  width: calc(100% - 64px);     /* safe margins on sides */
-  background: transparent !important;
-  box-shadow: none !important;
-  border: 0 !important;
-  text-align: center;
-  pointer-events: none;         /* clicks pass through except the pill */
+  position: absolute; left: 50%; transform: translateX(-50%);
+  bottom: 28px; width: calc(100% - 64px);
+  background: transparent !important; border: 0 !important; box-shadow: none !important;
+  text-align: center; pointer-events: none;
 }
-
-/* Caption content as a glassy pill */
 .glightbox-container .gdesc-inner {
   display: inline-block;
   background: rgba(20,20,20,0.55);
@@ -267,17 +136,14 @@ a:hover{ opacity:.85; }
   color: #f5f5f5;
   padding: 10px 14px;
   border-radius: 999px;
-  font-size: 14px;
-  line-height: 1.4;
+  font-size: 14px; line-height: 1.4;
   pointer-events: auto;
 }
 .glightbox-container .gdesc-inner strong {
-  font-weight: 700;
-  letter-spacing: .3px;
-  margin-right: 6px;
+  font-weight: 700; letter-spacing: .3px; margin-right: 6px;
 }
 
-/* Nicer image rendering in the lightbox */
+/* Image framing in lightbox */
 .glightbox-container .gslide-image img {
   border-radius: 12px;
   max-height: 85vh;
@@ -287,159 +153,3 @@ a:hover{ opacity:.85; }
 
 /* Tidy close button */
 .glightbox-clean .gclose { background: none !important; }
-
-
-/* ===== Mobile/responsive fixes ===== */
-
-/* 1) Prevent any horizontal scroll on small screens */
-html, body { overflow-x: hidden; }
-
-/* 2) Make the header wrap cleanly on phones */
-.topbar .container{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  flex-wrap: wrap;           /* allows name and nav to stack */
-  padding-left: 16px;        /* small side padding for phones */
-  padding-right: 16px;
-}
-.brand { white-space: nowrap; }
-
-/* Nav as a single centered row under the name on small screens */
-@media (max-width: 640px){
-  .nav{
-    width:100%;
-    display:flex;
-    justify-content:center;
-    gap:18px;
-    margin-top:6px;
-    flex-wrap: wrap;
-  }
-  .nav a{ margin-left:0; font-weight:600; }
-}
-
-/* 3) Container padding so content never touches edges on phones */
-.container{ padding-left: 16px; padding-right: 16px; }
-
-/* 4) Masonry grid: make sure it collapses to 1 column on phones
-      and that special spans don't break the layout */
-.masonry{
-  display:grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gap);
-}
-@media (max-width: 980px){ .masonry{ grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 640px){
-  .masonry{ grid-template-columns: 1fr; }
-  .span-2{ grid-column: span 1 !important; }  /* reset wide tiles */
-  .tile.tall{ grid-row: auto !important; }    /* reset tall tiles */
-}
-
-/* 5) Tile safety: images always stay inside the viewport */
-.tile{
-  border-radius:14px;
-  overflow:hidden;                    /* no overflow outside card */
-  background:#fff;
-  box-shadow:0 6px 24px rgba(0,0,0,.08);
-  transform: translateZ(0);           /* avoids odd GPU artifacts */
-}
-.tile img{
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit: cover;                   /* crop to frame, no stretch */
-}
-
-/* 6) Slightly tighter section spacing on small screens */
-@media (max-width: 640px){
-  .section{ padding: 40px 0 48px; }
-  .title{ font-size: clamp(24px, 6vw, 36px); }
-}
-
-/* ===== Reset Tailwind collision & layout wrapper ===== */
-.wrap { width: min(1200px, 92vw); margin: 0 auto; padding-inline: 16px; }
-
-/* ===== Header / Nav (mobile-first) ===== */
-.site-header {
-  position: sticky; top: 0; z-index: 40;
-  background: var(--bg);
-  border-bottom: 1px solid rgba(0,0,0,.08);
-}
-.site-header .wrap {
-  display: flex; align-items: center; justify-content: space-between; gap: 12px;
-  padding-block: 14px;
-}
-.brand { font-weight: 800; letter-spacing: .06em; white-space: nowrap; }
-
-/* hamburger visible on phones */
-.menu-toggle {
-  appearance: none; border: 0; background: transparent; color: var(--ink);
-  font-size: 24px; line-height: 1; padding: 6px 8px; cursor: pointer;
-}
-@media (min-width: 769px){ .menu-toggle { display: none; } }
-
-/* nav panel (hidden on phones until opened) */
-.nav {
-  display: flex; gap: 22px; align-items: center;
-  font-weight: 700; letter-spacing: .05em;
-}
-.nav a { color: var(--ink); text-decoration: none; padding-bottom: 4px; position: relative; }
-.nav a.active::after { content:""; position:absolute; left:0; right:0; bottom:0; height:2px; background: var(--accent); }
-
-@media (max-width: 768px){
-  .nav {
-    position: fixed; left: 0; right: 0; top: calc(56px + 1px);
-    background: var(--bg);
-    border-top: 1px solid rgba(0,0,0,.08);
-    padding: 14px 16px;
-    display: none;              /* closed by default */
-    flex-direction: column; gap: 12px;
-  }
-  .nav.open { display: flex; }
-  body.menu-open { overflow: hidden; } /* prevent body scroll when menu open */
-}
-
-/* ===== Sections ===== */
-.section { padding: 56px 0 64px; }
-@media (max-width: 640px){ .section { padding: 40px 0 48px; } }
-
-/* ===== Masonry grid: bulletproof on mobile ===== */
-.masonry {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: var(--gap);
-}
-@media (max-width: 1024px){ .masonry { grid-template-columns: repeat(2, minmax(0,1fr)); } }
-@media (max-width: 768px){
-  .masonry { grid-template-columns: 1fr; }
-  .masonry .span-2 { grid-column: span 1 !important; }
-  .masonry .tall   { grid-row: auto !important; }
-}
-
-/* Tile cards always clip inside viewport */
-.tile {
-  display: block; overflow: hidden; border-radius: 14px;
-  background: #fff; box-shadow: 0 6px 24px rgba(0,0,0,.08);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.tile:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,.12); }
-
-/* default ratio so every tile has a height on mobile (override with ratio-* classes) */
-.tile { aspect-ratio: 3 / 2; }
-.ratio-3x2 { aspect-ratio: 3 / 2; }
-.ratio-4x3 { aspect-ratio: 4 / 3; }
-.ratio-1x1 { aspect-ratio: 1 / 1; }
-.ratio-4x5 { aspect-ratio: 4 / 5; }
-.ratio-2x3 { aspect-ratio: 2 / 3; }
-.span-2 { grid-column: span 2; }
-
-.tile img { width: 100%; height: 100%; display: block; object-fit: cover; }
-
-/* ===== Page background (clay) & text colors from earlier ===== */
-:root{
-  --bg:#E9E2DB; --ink:#1B1B1B; --ink-dim:#4b4b4b; --accent:#2B2B2B;
-  --gap:20px;
-}
-body { background: var(--bg); color: var(--ink); }
-a { color: var(--ink); }
