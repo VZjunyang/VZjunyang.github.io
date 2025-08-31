@@ -10,19 +10,39 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.1/css/glightbox.min.css">
 </head>
+
+<script>
+  (function () {
+    const btn = document.querySelector('.menu-toggle');
+    const nav = document.getElementById('site-nav');
+    btn.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('menu-open', open);
+    });
+  })();
+</script>
+
 <body>
 
   <!-- Top bar (name left, sections right) -->
-<header class="topbar">
-  <div class="container flex items-center justify-between">
-    <div class="brand">VICTOR ZHUANG</div>
-    <nav class="nav">
-      <a href="index.html" class="active">PORTFOLIO</a>
-      <a href="about.html">ABOUT ME</a>
-      <a href="contact.html">CONTACT</a>
-    </nav>
-  </div>
-</header>
+  <header class="site-header">
+    <div class="wrap">
+      <div class="brand">VICTOR ZHUANG</div>
+
+      <!-- hamburger -->
+      <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">
+        ☰
+      </button>
+
+      <nav id="site-nav" class="nav">
+        <a href="index.html" class="active">PORTFOLIO</a>
+        <a href="about.html">ABOUT ME</a>
+        <a href="contact.html">CONTACT</a>
+      </nav>
+    </div>
+  </header>
+
 
   <main>
     <!-- PORTFOLIO -->
@@ -45,7 +65,7 @@
           <a class="tile ratio-4x5 glightbox" href="images/IMG_0422.jpg" data-gallery="pf" data-description="Nikon D5300 | 50mm ƒ/1.8 | ƒ/4 · 13s · ISO 100 · 50mm">
             <img src="images/IMG_0422.jpg" alt="IMG_0422" width="1200" height="1500" loading="lazy">
           </a>
-          
+
           <!-- landscape -->
           <a class="tile ratio-3x2 glightbox" href="images/IMG_0312.JPG" data-gallery="pf" data-description="Nikon Z6 | NIKKOR Z 28-75mm ƒ/2.8 | ƒ/2.8 · 1/60s · ISO 5000 · 59mm">
             <img src="images/IMG_0312.JPG" alt="IMG_0312" width="1200" height="800" loading="lazy">
