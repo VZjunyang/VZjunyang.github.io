@@ -208,3 +208,46 @@ a:hover { opacity: 0.9; }
   transition: all 0.3s ease;
 }
 
+/* --- Seamless masonry (columns) --- */
+.masonry--seamless{
+  display: block;                 /* override grid */
+  column-count: 3;
+  column-gap: var(--gap);
+}
+@media (max-width: 1024px){ .masonry--seamless{ column-count: 2; } }
+@media (max-width: 768px) { .masonry--seamless{ column-count: 1; } }
+
+/* tiles flow vertically in columns with even spacing */
+.masonry--seamless .tile{
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  margin: 0 0 var(--gap);        /* vertical gap (matches column-gap) */
+  width: 100%;
+  display: block;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,.08);
+  overflow: hidden;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.masonry--seamless .tile:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+/* images: keep natural ratio, no forced crop */
+.masonry--seamless .tile img{
+  width: 100%;
+  height: auto;                  /* let intrinsic height define tile */
+  display: block;
+  object-fit: cover;             /* switch to 'contain' if you prefer no cropping */
+}
+
+/* neutralize grid-only helpers inside column layout */
+.masonry--seamless .span-2{ grid-column: auto !important; }
+.masonry--seamless .ratio-3x2,
+.masonry--seamless .ratio-4x3,
+.masonry--seamless .ratio-1x1,
+.masonry--seamless .ratio-4x5,
+.masonry--seamless .ratio-2x3{ aspect-ratio: auto; }
+
